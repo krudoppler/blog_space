@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee+Tint&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="top-nav">
+        <a href="#">BlogSpace</a>
+      </div>
+    </nav>
+
+    <form action="" class="form-container" id="form-container">
+        <label for="post-title">Title</label>
+        <input type="text" name="post-title" id="post-title" placeholder="Title" required>
+        <label for="post-body">Body</label>
+        <textarea id="textarea-container" class="textarea-container" placeholder="Type Your Thoughts!"></textarea>
+        <button type="submit"> Submit Post</button>
+    </form>
+
+    <div id="api-container" class="api-container"></div>
+
+    <script src="index.js"></script>
+  </body>
+</html>

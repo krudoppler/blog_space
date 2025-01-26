@@ -30,17 +30,29 @@ body {
   .form-container {
     padding-top: 6em;
     margin-bottom: 0;
+    padding-bottom: 2em;
     padding-left: 3em;
     display: flex;
     flex-direction: column;
+    background-color: aliceblue;
+    align-items: center;
+    
+    
   }
 
   .form-container input {
     width: 200px;
+    margin-bottom: 10px;
+    
+  }
+
+  .form-container textarea {
+    margin-bottom: 10px;
   }
 
   button {
     width: 150px;
+    cursor: pointer;
   }
 
   textarea {

@@ -1,16 +1,22 @@
+let postsArray = [];
+
+function renderPosts() {
+  let postedData = "";
+  postsArray.forEach((postMessage) => {
+    postedData += `
+            <h3>${postMessage.title}</h3> 
+            <p>${postMessage.body}</p>
+            <hr />
+             `;
+  });
+  document.getElementById("api-container").innerHTML = postedData;
+}
+
 fetch("https://apis.scrimba.com/jsonplaceholder/posts")
   .then((response) => response.json())
   .then((data) => {
-    const dataSubset = data.slice(0, 5);
-    let postedData = "";
-    dataSubset.forEach((postMessage) => {
-      postedData += `
-            <h3>${postMessage.title}</h3> 
-            <p>${postMessage.body}</p>
-            
-             `;
-    });
-    document.getElementById("api-container").innerHTML = postedData;
+    postsArray = data.slice(0, 5);
+    renderPosts();
   });
 
 document
@@ -22,22 +28,20 @@ document
 
     const fullPost = {
       title: postTitle,
-      text: postText,
+      body: postText,
     };
 
     fetch("https://apis.scrimba.com/jsonplaceholder/posts", {
       method: "POST",
       body: JSON.stringify(fullPost),
-      headers: {"Content-Type": "application/json"} 
+      headers: { "Content-Type": "application/json" },
     })
-    .then(response => response.json())
-    .then(post => {
-      document.getElementById("api-container").innerHTML += `
-      <h3> ${post.title} </h3>
-      <p> ${post.text} </p>
-      `
-    })
-      
-    
+      .then((response) => response.json())
+      .then((post) => {
+        postsArray.unshift(post);
+        renderPosts();
 
+        document.getElementById("post-title").value = "";
+        document.getElementById("textarea-container").value = "";
+      });
   });
